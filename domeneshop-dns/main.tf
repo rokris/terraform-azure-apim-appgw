@@ -2,7 +2,7 @@
 
 data "azurerm_public_ip" "pip" {
   name                = var.appgw_pip_name
-  resource_group_name = var.resource_group_name.name
+  resource_group_name = var.resource_group_name
 }
 
 data "domeneshop_domains" "domain" {

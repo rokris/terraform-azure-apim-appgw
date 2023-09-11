@@ -34,3 +34,7 @@ variable "domain" {
 variable "appgw_pip_name" {
   default = "ng-ti-test-rokris-agw-pip"
 }
+
+variable "resource_group_name" {
+  default = "ng-ti-test-rokris-rg"
+}
