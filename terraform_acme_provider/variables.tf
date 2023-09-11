@@ -36,7 +36,7 @@ variable "cert_cn" {
 }
 
 variable "cert_sub" {
-  default = "*.snorkelground.no, *.snorkelground.com"
+  default = ""
 }
 
 variable "cert_algorithm" {
