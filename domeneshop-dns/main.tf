@@ -13,7 +13,7 @@ resource "domeneshop_record" "api" {
   domain_id = data.domeneshop_domains.domain.domains[0].id
   host      = "api"
   type      = "A"
-  data      = data.azurerm_public_ip.example.ip_address
+  data      = data.azurerm_public_ip.pip.ip_address
   ttl       = 300
 }
 
@@ -21,7 +21,7 @@ resource "domeneshop_record" "portal" {
   domain_id = data.domeneshop_domains.domain.domains[0].id
   host      = "portal"
   type      = "A"
-  data      = data.azurerm_public_ip.example.ip_address
+  data      = data.azurerm_public_ip.pip.ip_address
   ttl       = 300
 }
 
@@ -29,6 +29,6 @@ resource "domeneshop_record" "management" {
   domain_id = data.domeneshop_domains.domain.domains[0].id
   host      = "management"
   type      = "A"
-  data      = data.azurerm_public_ip.example.ip_address
+  data      = data.azurerm_public_ip.pip.ip_address
   ttl       = 300
 }
