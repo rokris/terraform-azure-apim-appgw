@@ -17,6 +17,21 @@ variable "tags" {
   }
 }
 
+variable "DOMENESHOP_API_TOKEN" {
+  type      = string
+  sensitive = true
+}
+
+variable "DOMENESHOP_API_SECRET" {
+  type      = string
+  sensitive = true
+}
+
+variable "domain" {
+  type      = string
+  default   = null
+}
+
 variable "vnet_name" {
   default = "ng-ti-test-rokris-vnet"
 }

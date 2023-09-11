@@ -58,7 +58,42 @@ resource "azurerm_public_ip" "pip" {
   tags                = var.tags
 }
 
-#Read the External Key Vault
+# Register in Public DNS server
+
+data "azurerm_public_ip" "pip" {
+  name                = azurerm_public_ip.pip.name
+  resource_group_name = data.azurerm_resource_group.rg.name
+}
+
+data "domeneshop_domains" "domain" {
+  domain = var.domain
+}
+
+resource "domeneshop_record" "api" {
+  domain_id = data.domeneshop_domains.domain.domains[0].id
+  host      = "api"
+  type      = "A"
+  data      = azurerm_public_ip.pip.ip_address
+  ttl       = 300
+}
+
+resource "domeneshop_record" "portal" {
+  domain_id = data.domeneshop_domains.domain.domains[0].id
+  host      = "portal"
+  type      = "A"
+  data      = azurerm_public_ip.pip.ip_address
+  ttl       = 300
+}
+
+resource "domeneshop_record" "management" {
+  domain_id = data.domeneshop_domains.domain.domains[0].id
+  host      = "management"
+  type      = "A"
+  data      = azurerm_public_ip.pip.ip_address
+  ttl       = 300
+}
+
+# Read the External Key Vault
 data "azurerm_key_vault" "example" {
   name                = var.keyvault
   resource_group_name = data.azurerm_resource_group.rg.name
