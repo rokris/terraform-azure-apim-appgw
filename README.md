@@ -8,7 +8,12 @@
 - terraform apply (optional: tfplan)
 - terraform destroy (optional: -auto-approve)
 - (Optional for Mac: brew install terragrunt)
-- (Optional: terragrunt run-all -(init, plan, apply, destroy)) (-out tfplan) (--terragrunt-non-interactive)
+
+### Alternativ deployment with use of Terragrunt
+- terragrunt run-all init -upgrade
+- terragrunt run-all plan -out tfplan --terragrunt-non-interactive
+- terragrunt run-all apply tfplan --terragrunt-non-interactive
+- terragrunt run-all destroy --terragrunt-non-interactive
 
 ## Requirements
 - Azure VNET
