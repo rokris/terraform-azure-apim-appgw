@@ -67,6 +67,7 @@ data "azurerm_key_vault" "example" {
 data "azurerm_key_vault_certificate" "prod_certificate" {
   name                = var.certificate_name
   key_vault_id        = data.azurerm_key_vault.production_keyvault.id
+  depends_on = [ azurerm_key_vault_access_policy.policy ]
 }
 
 data "azurerm_user_assigned_identity" "user" {
