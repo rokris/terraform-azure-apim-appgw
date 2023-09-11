@@ -37,3 +37,4 @@ terraform.rc
 
 # Other files / directories
 .DS_Store
+tfplan
