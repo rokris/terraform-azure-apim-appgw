@@ -20,7 +20,7 @@ resource "azurerm_private_dns_zone_virtual_network_link" "virtual-link" {
 
 #Create DNS Records
 resource "azurerm_private_dns_a_record" "zone" {
-  for_each            = { for record in locals.dns_records : record.name => record }
+  for_each            = { for record in local.dns_records : record.name => record }
   name                = each.value.name
   resource_group_name = each.value.resource_group_name
   zone_name           = each.value.zone_name
