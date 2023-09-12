@@ -16,8 +16,22 @@
 - terragrunt run-all destroy --terragrunt-non-interactive
 
 ## Requirements
-- Azure VNET
-- Keyvault
-- az CLI installed
-- Terraform installed
+- Azure VNET exist in Azure subscription
+- Keyvault exist in Azure subscription
+- Resourcegroup exist in Azure subscription
+- AZ CLI
+- Terraform
+- Terrgrunt
+
+## APPGW terraform.tfvars
+Create a file in the appgw folder named terraform.tfvars
+Add variables:
+~~~
+(terraform.tfvars)
+
+DOMENESHOP_API_TOKEN = "8k3jnk22323k32"
+DOMENESHOP_API_SECRET = "xzkj32kjh23kjh23k3ddlk43kya4dVPlHDkFgBFDkUClq4I7ciWiCxsjE"
+domain = "example.no"
+~~~
+
 ## Work still in progress
