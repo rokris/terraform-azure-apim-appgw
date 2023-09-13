@@ -15,6 +15,12 @@
 - terragrunt run-all apply tfplan --terragrunt-non-interactive
 - terragrunt run-all destroy --terragrunt-non-interactive
 
+### Run as daemon screen in a linux
+- screen -dmS terraform-daemon bash -c 'terragrunt run-all apply tfplan --terragrunt-non-interactive | tee terragrunt.log'
+- screen -list
+- screen -r terraform-daemon
+- exit with ctrl+a d
+
 ## Requirements
 - Azure VNET exist in Azure subscription
 - Keyvault exist in Azure subscription
