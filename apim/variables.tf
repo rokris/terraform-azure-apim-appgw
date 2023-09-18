@@ -157,3 +157,11 @@ variable "nsg_rules" {
     }
   }
 }
+
+variable "nat_pip_name" {
+  default = "ng-ti-test-rokris-nat-pip"
+}
+
+variable "nat_gw_name" {
+  default = "ng-ti-test-rokris-nat"
+}

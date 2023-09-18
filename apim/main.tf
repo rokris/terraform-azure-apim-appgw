@@ -31,7 +31,7 @@ resource "azurerm_network_security_rule" "rules" {
 
 resource "azurerm_subnet_network_security_group_association" "ass" {
   subnet_id                 = azurerm_subnet.apim-subnet.id
-  network_security_group_id = data.azurerm_network_security_group.apim-nsg.id
+  network_security_group_id = azurerm_network_security_group.apim-nsg.id
 }
 
 resource "azurerm_public_ip" "pip" {
@@ -164,4 +164,36 @@ resource "azurerm_api_management_custom_domain" "apim" {
     host_name    = var.management_dns_name
     key_vault_id = data.azurerm_key_vault_certificate.prod_certificate.versionless_secret_id
   }
+}
+
+# Create public IP
+resource "azurerm_public_ip" "nat_pip" {
+  name                = var.nat_pip_name
+  resource_group_name = var.apim_rg
+  location            = var.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+  tags                = var.tags
+}
+
+# Create the NAT Gateway
+resource "azurerm_nat_gateway" "nat" {
+  name                = var.nat_gw_name
+  location            = var.location
+  resource_group_name = var.apim_rg
+  sku_name            = "Standard"
+  idle_timeout_in_minutes = 4
+  tags = var.tags
+}
+
+# Associate a public IP
+resource "azurerm_nat_gateway_public_ip_association" "example" {
+  nat_gateway_id       = azurerm_nat_gateway.nat.id
+  public_ip_address_id = azurerm_public_ip.nat_pip.id
+}
+
+# Associate a subnet to NAT gateway
+resource "azurerm_subnet_nat_gateway_association" "association" {
+  subnet_id      = azurerm_subnet.apim-subnet.id
+  nat_gateway_id = azurerm_nat_gateway.nat.id
 }
