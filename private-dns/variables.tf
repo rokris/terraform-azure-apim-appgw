@@ -24,5 +24,5 @@ variable "tags" {
 }
 
 variable "dns_zone" {
-  default = "snorkelground.no"
+  default = "snorkelground.com"
 }

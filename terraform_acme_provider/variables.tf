@@ -32,7 +32,7 @@ variable "cert_name" {
 }
 
 variable "cert_cn" {
-  default = "*.snorkelground.no"
+  default = "*.snorkelground.com"
 }
 
 variable "cert_sub" {

@@ -41,7 +41,7 @@ variable "keyvault" {
 }
 
 variable "apim_gateway_dns_name" {
-  default = "api.snorkelground.no"
+  default = "api.snorkelground.com"
 }
 
 variable "certificate_name" {
