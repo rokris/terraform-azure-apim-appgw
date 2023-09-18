@@ -1,9 +1,46 @@
+resource "azurerm_network_security_group" "apim-nsg" {
+  name                = var.apim_nsg_name
+  location            = var.location
+  resource_group_name = var.apim_rg
+}
+
+# NSG rules
+resource "azurerm_network_security_rule" "rules" {
+  for_each                    = var.nsg_rules
+  name                        = each.key
+  priority                    = each.value.priority
+  direction                   = each.value.direction
+  access                      = each.value.access
+  protocol                    = each.value.protocol
+  source_address_prefix       = each.value.source_address_prefix
+  source_port_range           = each.value.source_port_range
+  destination_address_prefix  = each.value.destination_address_prefix
+  destination_port_range      = each.value.destination_port_range
+  resource_group_name         = var.apim_rg
+  network_security_group_name = azurerm_network_security_group.apim-nsg.name
+}
+
 # Create Subnet for APIM
 resource "azurerm_subnet" "apim-subnet" {
-  name                 = var.apim_subnet_name
-  resource_group_name  = var.apim_rg
-  virtual_network_name = var.vnet_name
-  address_prefixes     = [var.apim_subnet_iprange]
+  name                      = var.apim_subnet_name
+  resource_group_name       = var.apim_rg
+  virtual_network_name      = var.vnet_name
+  address_prefixes          = [var.apim_subnet_iprange]
+}
+
+resource "azurerm_subnet_network_security_group_association" "ass" {
+  subnet_id                 = azurerm_subnet.apim-subnet.id
+  network_security_group_id = azurerm_network_security_group.apim-nsg.id
+}
+
+resource "azurerm_public_ip" "pip" {
+  name                = var.apim_pip_name
+  resource_group_name = var.apim_rg
+  location            = var.location
+  allocation_method   = "Static"
+  domain_name_label   = "apim"
+  sku                 = "Standard"
+  tags                = var.tags
 }
 
 resource "azurerm_api_management" "apim" {
@@ -18,6 +55,10 @@ resource "azurerm_api_management" "apim" {
   virtual_network_configuration {
     subnet_id = azurerm_subnet.apim-subnet.id
   }
+
+  # Set the public IP address ID
+  public_ip_address_id = azurerm_public_ip.pip.id
+
   protocols {
     enable_http2 = true
   }
