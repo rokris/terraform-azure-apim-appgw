@@ -1,13 +1,20 @@
 # terraform-azure-apim-appgw
 ## Deploy DNS Private zone, Azure API Management, Azure App Gateway
 
+- Edit variables.tf files according to your environment
+- Add terraform.tfvars files with correct values
 - Login (az login)
-- az account set --subscription ng-ti-sandbox
+- az account set --subscription <subscription>
 - terraform init (optional: -upgrade)
 - terraform plan (optional: -out tfplan)
 - terraform apply (optional: tfplan)
 - terraform destroy (optional: -auto-approve)
-- (Optional for Mac: brew install terragrunt)
+
+The running sequence of terraform deployments
+1. terraform_acme_provider
+2. private-dns
+3. apim
+4. appgw
 
 ### Alternativ deployment with use of Terragrunt
 - terragrunt run-all init -upgrade
@@ -20,10 +27,10 @@
 - Keyvault exist in Azure subscription
 - Resourcegroup exist in Azure subscription
 - AZ CLI
-- Terraform
-- Terrgrunt
+- Terraform installed
+- Terrgrunt installed
 
-## APPGW terraform.tfvars
+## appgw terraform.tfvars
 Create a file in the appgw folder named terraform.tfvars
 Add variables:
 ~~~
