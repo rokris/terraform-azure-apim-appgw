@@ -53,6 +53,16 @@ resource "azurerm_api_management" "apim" {
   sku_name             = var.sku
   tags                 = var.tags
   virtual_network_type = "Internal"
+  
+  sign_up {
+    enabled = true
+
+    terms_of_service {
+      consent_required = true
+      enabled         = true
+    }
+  }
+  
   virtual_network_configuration {
     subnet_id = azurerm_subnet.apim-subnet.id
   }
