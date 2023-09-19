@@ -148,7 +148,7 @@ EOD
   type = object({
     enabled                  = optional(bool, true)
     file_upload_limit_mb     = optional(number, 100)
-    firewall_mode            = optional(string, "Detection")
+    firewall_mode            = optional(string, "Prevention")
     max_request_body_size_kb = optional(number, 128)
     request_body_check       = optional(bool, true)
     rule_set_type            = optional(string, "OWASP")
