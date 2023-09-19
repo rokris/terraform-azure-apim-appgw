@@ -21,6 +21,7 @@ The running sequence of terraform deployments
 - terragrunt run-all plan -out tfplan --terragrunt-non-interactive
 - terragrunt run-all apply tfplan --terragrunt-non-interactive
 - terragrunt run-all destroy --terragrunt-non-interactive
+- (--terragrunt-ignore-dependency-errors)
 
 ## Requirements
 - Azure VNET exist in Azure subscription
