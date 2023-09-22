@@ -1,6 +1,8 @@
 # terraform-azure-apim-appgw
 ## Deploy DNS Private zone, Azure API Management, Azure App Gateway
 
+![image](https://github.com/rokris/terraform-azure-apim-appgw/assets/18302354/7440ef95-98e0-4cd3-8f86-44a91c827aff)
+
 - Edit variables.tf files according to your environment
 - Add terraform.tfvars files with correct values
 - Login (az login)
