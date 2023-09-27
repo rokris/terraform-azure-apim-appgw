@@ -6,7 +6,7 @@
 - Edit variables.tf files according to your environment
 - Add terraform.tfvars files with correct values
 - Login (az login)
-- az account set --subscription <subscription>
+- az account set --subscription \<subscription>
 - terraform init (optional: -upgrade)
 - terraform plan (optional: -out tfplan)
 - terraform apply (optional: tfplan)
