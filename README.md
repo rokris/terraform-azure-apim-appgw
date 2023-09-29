@@ -26,9 +26,10 @@ The running sequence of terraform deployments
 - (--terragrunt-ignore-dependency-errors)
 
 ## Requirements
-- Azure VNET exist in Azure subscription
-- Keyvault exist in Azure subscription
 - Resourcegroup exist in Azure subscription
+- Azure Vnet exist in Azure subscription
+- Keyvault exist in Azure subscription
+- Storage account exist in Azure subscription
 - AZ CLI
 - Terraform installed
 - Terrgrunt installed
