@@ -44,8 +44,8 @@ DOMENESHOP_API_SECRET = "xzkj32kjh23kjh23k3ddlk43kya4dVPlHDkFgBFDkUClq4I7ciWiCxs
 domain = "example.no"
 ~~~
 
-## private-dns terraform.tfvars
-Create a file in the private-dns folder named terraform.tfvars
+## terraform_acme_provider terraform.tfvars
+Create a file in the terraform_acme_provider folder named terraform.tfvars
 Add variables:
 ~~~
 (terraform.tfvars)
