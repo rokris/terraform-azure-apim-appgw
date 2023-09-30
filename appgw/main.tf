@@ -113,13 +113,20 @@ data "azurerm_user_assigned_identity" "user" {
     ]
 }
 
+# Read Web Application Firewall policy ID
+data "azurerm_web_application_firewall_policy" "waf-id" {
+  name = "ng-ti-test-rokris-waf"
+  resource_group_name = var.appgw_rg
+}
+
 # Create an application gateway
 resource "azurerm_application_gateway" "main" {
   name                = var.appgw_name
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = var.location
 
-  firewall_policy_id  = var.firewall_policy_id
+#  firewall_policy_id  = var.firewall_policy_id
+  firewall_policy_id  = data.azurerm_web_application_firewall_policy.waf-id.id
   enable_http2        = var.enable_http2
   tags                = var.tags
   
