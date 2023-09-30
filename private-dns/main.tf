@@ -4,6 +4,12 @@ data "azurerm_virtual_network" "vnet" {
   resource_group_name = var.private_dns_rg
 }
 
+#Read the APIM private IP
+data "azurerm_api_management" "private-ip" {
+  name                = var.apim_name
+  resource_group_name = var.private_dns_rg
+}
+
 resource "azurerm_private_dns_zone" "dns" {
   name                = var.dns_zone
   resource_group_name = var.private_dns_rg
@@ -25,6 +31,6 @@ resource "azurerm_private_dns_a_record" "zone" {
   resource_group_name = each.value.resource_group_name
   zone_name           = each.value.zone_name
   ttl                 = each.value.ttl
-  records             = each.value.records
+  records             = [data.azurerm_api_management.private-ip.private_ip_addresses[0]]
   depends_on          = [azurerm_private_dns_zone.dns]
 }

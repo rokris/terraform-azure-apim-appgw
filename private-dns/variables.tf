@@ -26,3 +26,7 @@ variable "tags" {
 variable "dns_zone" {
   default = "snorkelground.com"
 }
+
+variable "apim_name" {
+  default = "ng-ti-test-rokris-apim"  
+}
