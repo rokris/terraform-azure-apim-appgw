@@ -18,7 +18,7 @@ variable "vnet_name" {
 
 variable "tags" {
   default = {
-    owner = "Roger Kristiansen"
+    owner       = "Roger Kristiansen"
     environment = "Lab"
   }
 }
@@ -28,5 +28,5 @@ variable "dns_zone" {
 }
 
 variable "apim_name" {
-  default = "ng-ti-test-rokris-apim"  
+  default = "ng-ti-test-rokris-apim"
 }

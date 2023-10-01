@@ -9,19 +9,19 @@ resource "azurerm_public_ip" "pip" {
 }
 
 data "azurerm_subnet" "apim_snet" {
-  name = var.apim_snet_name
-  resource_group_name = var.nat_rg_name
+  name                 = var.apim_snet_name
+  resource_group_name  = var.nat_rg_name
   virtual_network_name = var.vnet_name
 }
 
 # Create the NAT Gateway
 resource "azurerm_nat_gateway" "nat" {
-  name                = var.nat_gw_name
-  location            = var.location
-  resource_group_name = var.nat_rg_name
-  sku_name            = "Standard"
+  name                    = var.nat_gw_name
+  location                = var.location
+  resource_group_name     = var.nat_rg_name
+  sku_name                = "Standard"
   idle_timeout_in_minutes = 4
-  tags = var.tags
+  tags                    = var.tags
 }
 
 # Associate a public IP

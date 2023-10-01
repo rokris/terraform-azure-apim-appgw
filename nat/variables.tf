@@ -1,15 +1,15 @@
 variable "location" {
-    default = "Norway East"
+  default = "Norway East"
 }
 
 variable "nat_rg_name" {
-    default = "ng-ti-test-rokris-rg"
+  default = "ng-ti-test-rokris-rg"
 }
 
 variable "tags" {
-    default = {
-        owner = "Roger Kristiansen"
-        environment = "Lab"
+  default = {
+    owner       = "Roger Kristiansen"
+    environment = "Lab"
   }
 }
 

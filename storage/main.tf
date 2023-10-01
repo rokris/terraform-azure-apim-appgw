@@ -11,7 +11,7 @@ provider "azurerm" {
   features {}
 }
 
-data "azurerm_resource_group" "tfstate"{
+data "azurerm_resource_group" "tfstate" {
   name = "ng-ti-test-rokris-rg"
 }
 
@@ -23,10 +23,10 @@ resource "azurerm_storage_account" "tfstate" {
   account_replication_type = "LRS"
 
   tags = {
-    owner = "Roger Kristiansen"
+    owner       = "Roger Kristiansen"
     environment = "Lab"
-   }  
   }
+}
 
 resource "azurerm_storage_container" "tfstate" {
   name                  = "tfstate"

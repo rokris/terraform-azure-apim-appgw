@@ -1,11 +1,11 @@
 variable "DOMENESHOP_API_TOKEN" {
   description = "This must be set in terraform.tfvars file"
-  default = ""
+  default     = ""
 }
 
 variable "DOMENESHOP_API_SECRET" {
   description = "This must be set in terraform.tfvars file"
-  default = ""
+  default     = ""
 }
 
 variable "resource_group_name" {
@@ -18,7 +18,7 @@ variable "key_vault" {
 
 variable "tags" {
   default = {
-    owner = "Roger Kristiansen"
+    owner       = "Roger Kristiansen"
     environment = "Lab"
   }
 }

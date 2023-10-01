@@ -1,6 +1,6 @@
 data "azurerm_client_config" "current" {}
 
-data "azurerm_resource_group" "rg"{
+data "azurerm_resource_group" "rg" {
   name = var.appgw_rg
 }
 
@@ -100,9 +100,9 @@ data "azurerm_key_vault" "example" {
 }
 
 data "azurerm_key_vault_certificate" "prod_certificate" {
-  name                = var.certificate_name
-  key_vault_id        = data.azurerm_key_vault.production_keyvault.id
-  depends_on = [ azurerm_key_vault_access_policy.policy ]
+  name         = var.certificate_name
+  key_vault_id = data.azurerm_key_vault.production_keyvault.id
+  depends_on   = [azurerm_key_vault_access_policy.policy]
 }
 
 data "azurerm_user_assigned_identity" "user" {
@@ -110,12 +110,12 @@ data "azurerm_user_assigned_identity" "user" {
   resource_group_name = data.azurerm_resource_group.rg.name
   depends_on = [
     azurerm_user_assigned_identity.base
-    ]
+  ]
 }
 
 # Read Web Application Firewall policy ID
 data "azurerm_web_application_firewall_policy" "waf-id" {
-  name = "ng-ti-test-rokris-waf"
+  name                = "ng-ti-test-rokris-waf"
   resource_group_name = var.appgw_rg
 }
 
@@ -125,16 +125,16 @@ resource "azurerm_application_gateway" "main" {
   resource_group_name = data.azurerm_resource_group.rg.name
   location            = var.location
 
-#  firewall_policy_id  = var.firewall_policy_id
-  firewall_policy_id  = data.azurerm_web_application_firewall_policy.waf-id.id
-  enable_http2        = var.enable_http2
-  tags                = var.tags
-  
+  #  firewall_policy_id  = var.firewall_policy_id
+  firewall_policy_id = data.azurerm_web_application_firewall_policy.waf-id.id
+  enable_http2       = var.enable_http2
+  tags               = var.tags
+
   identity {
-    type         = "UserAssigned"
+    type = "UserAssigned"
     identity_ids = [
       data.azurerm_user_assigned_identity.user.id
-      ]
+    ]
   }
 
   sku {
@@ -159,8 +159,8 @@ resource "azurerm_application_gateway" "main" {
   }
 
   backend_address_pool {
-    name         = var.backend_address_pool_name
-    fqdns        = [var.apim_gateway_dns_name,]
+    name  = var.backend_address_pool_name
+    fqdns = [var.apim_gateway_dns_name, ]
   }
 
   backend_http_settings {
@@ -176,7 +176,7 @@ resource "azurerm_application_gateway" "main" {
     key_vault_secret_id = data.azurerm_key_vault_certificate.prod_certificate.secret_id
     name                = var.certificate_name
   }
-  
+
   http_listener {
     name                           = var.listener_name
     frontend_ip_configuration_name = var.frontend_ip_configuration_name
@@ -202,7 +202,7 @@ resource "azurerm_application_gateway" "main" {
     unhealthy_threshold                       = 3
     match {
       status_code = [
-      "200",
+        "200",
       ]
     }
   }

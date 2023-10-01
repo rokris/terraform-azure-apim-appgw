@@ -12,7 +12,7 @@ variable "location" {
 
 variable "tags" {
   default = {
-    owner = "Roger Kristiansen"
+    owner       = "Roger Kristiansen"
     environment = "Lab"
   }
 }
@@ -28,8 +28,8 @@ variable "DOMENESHOP_API_SECRET" {
 }
 
 variable "domain" {
-  type      = string
-  default   = null
+  type    = string
+  default = null
 }
 
 variable "vnet_name" {
@@ -87,7 +87,7 @@ variable "backend_subnet_iprange" {
 }
 
 variable "backend_address_pool_name" {
-    default = "ApimPool"
+  default = "ApimPool"
 }
 
 variable "https_setting_name" {

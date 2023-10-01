@@ -1,29 +1,29 @@
 variable "apim_name" {
-    default = "ng-ti-test-rokris-apim"
+  default = "ng-ti-test-rokris-apim"
 }
 
 variable "location" {
-    default = "Norway East"
+  default = "Norway East"
 }
 
 variable "apim_rg" {
-    default = "ng-ti-test-rokris-rg"
+  default = "ng-ti-test-rokris-rg"
 }
 
 variable "vnet_name" {
-    default = "ng-ti-test-rokris-vnet"
+  default = "ng-ti-test-rokris-vnet"
 }
 
 variable "apim_subnet_name" {
-    default = "ng-ti-test-rokris-apim-1-snet"
+  default = "ng-ti-test-rokris-apim-1-snet"
 }
 
 variable "apim_nsg_name" {
-    default = "ng-ti-test-rokris-apim-nsg"
+  default = "ng-ti-test-rokris-apim-nsg"
 }
 
 variable "apim_subnet_iprange" {
-    default = "10.96.10.16/28"
+  default = "10.96.10.16/28"
 }
 
 variable "apim_pip_name" {
@@ -31,9 +31,9 @@ variable "apim_pip_name" {
 }
 
 variable "tags" {
-    default = {
-        owner = "Roger Kristiansen"
-        environment = "Lab"
+  default = {
+    owner       = "Roger Kristiansen"
+    environment = "Lab"
   }
 }
 
@@ -46,31 +46,31 @@ variable "certificate_name" {
 }
 
 variable "dns_zone" {
-    default = "snorkelground.com"
+  default = "snorkelground.com"
 }
 
 variable "sku" {
-    default = "Developer_1"
+  default = "Developer_1"
 }
 
 variable "publisher_email" {
-    default = "roger.kristiansen@norgesgruppen.no"
+  default = "roger.kristiansen@norgesgruppen.no"
 }
 
 variable "publisher_name" {
-    default = "NorgesGruppen Data AS"
+  default = "NorgesGruppen Data AS"
 }
 
 variable "gateway_dns_name" {
-    default = "api.snorkelground.com"
+  default = "api.snorkelground.com"
 }
 
 variable "developer_portal_dns_name" {
-    default = "portal.snorkelground.com"
+  default = "portal.snorkelground.com"
 }
 
 variable "management_dns_name" {
-    default = "management.snorkelground.com"
+  default = "management.snorkelground.com"
 }
 
 variable "nsg_rules" {
@@ -86,74 +86,74 @@ variable "nsg_rules" {
   }))
   default = {
     inbound-http = {
-      priority                    = 100
-      direction                   = "Inbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "80"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "*"
+      priority                   = 100
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "80"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
     }
     inbound-https = {
-      priority                    = 105
-      direction                   = "Inbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "443"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "*"
+      priority                   = 105
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "443"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
     }
     inbound-management = {
-      priority                    = 110
-      direction                   = "Inbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "3443"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "*"
+      priority                   = 110
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "3443"
+      source_address_prefix      = "*"
+      destination_address_prefix = "*"
     }
     inbound-azure-lb = {
-      priority                    = 120
-      direction                   = "Inbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "6390"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "AzureLoadBalancer"
+      priority                   = 120
+      direction                  = "Inbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "6390"
+      source_address_prefix      = "*"
+      destination_address_prefix = "AzureLoadBalancer"
     }
     outbound-storage = {
-      priority                    = 100
-      direction                   = "Outbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "443"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "VirtualNetwork"
+      priority                   = 100
+      direction                  = "Outbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "443"
+      source_address_prefix      = "*"
+      destination_address_prefix = "VirtualNetwork"
     }
     outbound-sql = {
-      priority                    = 110
-      direction                   = "Outbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "1433"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "VirtualNetwork"
+      priority                   = 110
+      direction                  = "Outbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "1433"
+      source_address_prefix      = "*"
+      destination_address_prefix = "VirtualNetwork"
     }
     outbound-key-vault = {
-      priority                    = 120
-      direction                   = "Outbound"
-      access                      = "Allow"
-      protocol                    = "Tcp"
-      source_port_range           = "*"
-      destination_port_range      = "443"
-      source_address_prefix       = "*"
-      destination_address_prefix  = "VirtualNetwork"
+      priority                   = 120
+      direction                  = "Outbound"
+      access                     = "Allow"
+      protocol                   = "Tcp"
+      source_port_range          = "*"
+      destination_port_range     = "443"
+      source_address_prefix      = "*"
+      destination_address_prefix = "VirtualNetwork"
     }
   }
 }

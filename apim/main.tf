@@ -1,9 +1,9 @@
 # Create Subnet for APIM
 resource "azurerm_subnet" "apim-subnet" {
-  name                      = var.apim_subnet_name
-  resource_group_name       = var.apim_rg
-  virtual_network_name      = var.vnet_name
-  address_prefixes          = [var.apim_subnet_iprange]
+  name                 = var.apim_subnet_name
+  resource_group_name  = var.apim_rg
+  virtual_network_name = var.vnet_name
+  address_prefixes     = [var.apim_subnet_iprange]
 }
 
 resource "azurerm_network_security_group" "apim-nsg" {
@@ -56,16 +56,16 @@ resource "azurerm_api_management" "apim" {
   depends_on = [
     azurerm_network_security_rule.rules
   ]
-  
+
   sign_up {
     enabled = true
 
     terms_of_service {
       consent_required = true
-      enabled         = true
+      enabled          = true
     }
   }
-  
+
   virtual_network_configuration {
     subnet_id = azurerm_subnet.apim-subnet.id
   }
@@ -92,15 +92,15 @@ resource "azurerm_api_management_api" "example" {
   path                  = "petstore"
   protocols             = ["https"]
   subscription_required = true
-  
+
   subscription_key_parameter_names {
     header = "Ocp-Apim-Subscription-Key"
     query  = "subscription-key"
   }
-  
+
   depends_on = [
     azurerm_api_management.apim
-    ]
+  ]
 
   import {
     content_format = "swagger-link-json"
@@ -144,7 +144,7 @@ resource "azurerm_api_management_api_policy" "inbound_policy" {
     </on-error>
 </policies>	
 	XML
-}  
+}
 
 #Read the External Key Vault
 data "azurerm_key_vault" "production_keyvault" {
@@ -170,7 +170,7 @@ resource "azurerm_key_vault_access_policy" "policy" {
 data "azurerm_key_vault_certificate" "prod_certificate" {
   name         = var.certificate_name
   key_vault_id = data.azurerm_key_vault.production_keyvault.id
-  depends_on = [ azurerm_key_vault_access_policy.policy ]
+  depends_on   = [azurerm_key_vault_access_policy.policy]
 }
 
 resource "azurerm_api_management_custom_domain" "apim" {
@@ -204,12 +204,12 @@ resource "azurerm_public_ip" "nat_pip" {
 
 # Create the NAT Gateway
 resource "azurerm_nat_gateway" "nat" {
-  name                = var.nat_gw_name
-  location            = var.location
-  resource_group_name = var.apim_rg
-  sku_name            = "Standard"
+  name                    = var.nat_gw_name
+  location                = var.location
+  resource_group_name     = var.apim_rg
+  sku_name                = "Standard"
   idle_timeout_in_minutes = 4
-  tags = var.tags
+  tags                    = var.tags
 }
 
 # Associate a public IP

@@ -14,10 +14,10 @@ resource "acme_certificate" "certificate" {
 
   dns_challenge {
     provider = "domeneshop"
-    
+
     config = {
-      DOMENESHOP_API_TOKEN           = var.DOMENESHOP_API_TOKEN
-      DOMENESHOP_API_SECRET          = var.DOMENESHOP_API_SECRET
+      DOMENESHOP_API_TOKEN  = var.DOMENESHOP_API_TOKEN
+      DOMENESHOP_API_SECRET = var.DOMENESHOP_API_SECRET
       #DOMENESHOP_HTTP_TIMEOUT        = ""
       #DOMENESHOP_POLLING_INTERVAL    = ""
       #DOMENESHOP_PROPAGATION_TIMEOUT = ""
@@ -32,7 +32,7 @@ data "azurerm_key_vault" "production_keyvault" {
 }
 
 resource "azurerm_key_vault_certificate" "kv_cert" {
-  name = var.cert_name
+  name         = var.cert_name
   key_vault_id = data.azurerm_key_vault.production_keyvault.id
   tags         = var.tags
 
@@ -47,10 +47,10 @@ resource "azurerm_key_vault_certificate" "kv_cert" {
     }
 
     key_properties {
-      key_size = var.cert_bits
-      key_type = var.cert_algorithm
+      key_size   = var.cert_bits
+      key_type   = var.cert_algorithm
       exportable = true
-      reuse_key = true
+      reuse_key  = true
     }
 
     secret_properties {
@@ -62,5 +62,5 @@ resource "azurerm_key_vault_certificate" "kv_cert" {
 data "azurerm_key_vault_certificate_data" "example" {
   name         = var.cert_name
   key_vault_id = data.azurerm_key_vault.production_keyvault.id
-  depends_on = [ azurerm_key_vault_certificate.kv_cert ]
+  depends_on   = [azurerm_key_vault_certificate.kv_cert]
 }
