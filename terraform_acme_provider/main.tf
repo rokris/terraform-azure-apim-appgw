@@ -1,3 +1,19 @@
+#Read the External Key Vault
+data "azurerm_key_vault" "production_keyvault" {
+  name                = var.key_vault
+  resource_group_name = var.resource_group_name
+}
+
+data "azurerm_key_vault_secret" "domeneshop_api_token" {
+  name         = "domeneshop-api-token"
+  key_vault_id = data.azurerm_key_vault.production_keyvault.id
+}
+
+data "azurerm_key_vault_secret" "domeneshop_api_secret" {
+  name         = "domeneshop-api-secret"
+  key_vault_id = data.azurerm_key_vault.production_keyvault.id
+}
+
 resource "tls_private_key" "private_key" {
   algorithm = var.cert_algorithm
 }
@@ -16,19 +32,13 @@ resource "acme_certificate" "certificate" {
     provider = "domeneshop"
 
     config = {
-      DOMENESHOP_API_TOKEN  = var.DOMENESHOP_API_TOKEN
-      DOMENESHOP_API_SECRET = var.DOMENESHOP_API_SECRET
+      DOMENESHOP_API_TOKEN  = data.azurerm_key_vault_secret.domeneshop_api_token.value
+      DOMENESHOP_API_SECRET = data.azurerm_key_vault_secret.domeneshop_api_secret.value
       #DOMENESHOP_HTTP_TIMEOUT        = ""
       #DOMENESHOP_POLLING_INTERVAL    = ""
       #DOMENESHOP_PROPAGATION_TIMEOUT = ""
     }
   }
-}
-
-#Read the External Key Vault
-data "azurerm_key_vault" "production_keyvault" {
-  name                = var.key_vault
-  resource_group_name = var.resource_group_name
 }
 
 resource "azurerm_key_vault_certificate" "kv_cert" {

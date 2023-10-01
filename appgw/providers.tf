@@ -23,7 +23,17 @@ provider "azurerm" {
   # subscription_id = "20000000-0000-0000-0000-000000000000"
 }
 
+data "azurerm_key_vault_secret" "domeneshop_api_token" {
+  name         = "domeneshop-api-token"
+  key_vault_id = data.azurerm_key_vault.production_keyvault.id
+}
+
+data "azurerm_key_vault_secret" "domeneshop_api_secret" {
+  name         = "domeneshop-api-secret"
+  key_vault_id = data.azurerm_key_vault.production_keyvault.id
+}
+
 provider "domeneshop" {
-  token  = var.DOMENESHOP_API_TOKEN
-  secret = var.DOMENESHOP_API_SECRET
+  token  = data.azurerm_key_vault_secret.domeneshop_api_token.value
+  secret = data.azurerm_key_vault_secret.domeneshop_api_secret.value
 }

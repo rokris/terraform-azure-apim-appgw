@@ -1,14 +1,14 @@
-variable "DOMENESHOP_API_TOKEN" {
-  description = "This must be set in terraform.tfvars file"
-  sensitive   = true
-  default     = ""
-}
+# variable "DOMENESHOP_API_TOKEN" {
+#   description = "This must be set in terraform.tfvars file"
+#   sensitive   = true
+#   default     = ""
+# }
 
-variable "DOMENESHOP_API_SECRET" {
-  description = "This must be set in terraform.tfvars file"
-  sensitive   = true
-  default     = ""
-}
+# variable "DOMENESHOP_API_SECRET" {
+#   description = "This must be set in terraform.tfvars file"
+#   sensitive   = true
+#   default     = ""
+# }
 
 variable "resource_group_name" {
   default = "ng-ti-test-rokris-rg"
