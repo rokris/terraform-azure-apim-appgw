@@ -53,6 +53,9 @@ resource "azurerm_api_management" "apim" {
   sku_name             = var.sku
   tags                 = var.tags
   virtual_network_type = "Internal"
+  depends_on = [
+    azurerm_network_security_rule.rules
+  ]
   
   sign_up {
     enabled = true
@@ -109,7 +112,6 @@ resource "azurerm_api_management_api_policy" "inbound_policy" {
   api_name            = azurerm_api_management_api.example.name
   api_management_name = var.apim_name
   resource_group_name = var.apim_rg
-  #operation_id        = azurerm_api_management_api_operation.api-foo.operation_id
 
   xml_content = <<XML
 <policies>
