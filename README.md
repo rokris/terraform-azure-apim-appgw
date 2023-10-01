@@ -29,31 +29,11 @@ The running sequence of terraform deployments
 - Resourcegroup exist in Azure subscription
 - Azure Vnet exist in Azure subscription
 - Keyvault exist in Azure subscription
+    - domeneshop-api-token
+    - domeneshop-api-secret
 - Storage account exist in Azure subscription
 - AZ CLI
 - Terraform installed
 - Terrgrunt installed
-
-## appgw terraform.tfvars
-Create a file in the appgw folder named terraform.tfvars
-Add variables:
-~~~
-(terraform.tfvars)
-
-DOMENESHOP_API_TOKEN = "8k3jnk22323k32"
-DOMENESHOP_API_SECRET = "xzkj32kjh23kjh23k3ddlk43kya4dVPlHDkFgBFDkUClq4I7ciWiCxsjE"
-domain = "example.no"
-~~~
-
-## terraform_acme_provider terraform.tfvars
-Create a file in the terraform_acme_provider folder named terraform.tfvars
-Add variables:
-~~~
-(terraform.tfvars)
-
-DOMENESHOP_API_TOKEN = "8k3jnk22323k32"
-DOMENESHOP_API_SECRET = "xzkj32kjh23kjh23k3ddlk43kya4dVPlHDkFgBFDkUClq4I7ciWiCxsjE"
-~~~
-
 
 ## Work still in progress
