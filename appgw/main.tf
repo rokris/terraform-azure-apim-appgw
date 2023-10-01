@@ -188,7 +188,6 @@ resource "azurerm_application_gateway" "main" {
   ssl_policy {
     policy_type = "Predefined"
     policy_name = "AppGwSslPolicy20220101S"
-    min_protocol_version = "TLSv1_2"
   }
 
   probe {

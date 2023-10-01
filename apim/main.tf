@@ -116,8 +116,22 @@ resource "azurerm_api_management_api_policy" "inbound_policy" {
   xml_content = <<XML
 <policies>
     <inbound>
-        <base />
-        <mock-response status-code="200" content-type="application/json" />
+      <base />
+      <mock-response status-code="200" content-type="application/json" />
+      <cors allow-credentials="true">
+        <allowed-origins>
+          <origin>https://${var.developer_portal_dns_name}</origin>
+        </allowed-origins>
+        <allowed-methods preflight-result-max-age="300">
+          <method>*</method>
+        </allowed-methods>
+        <allowed-headers>
+          <header>*</header>
+        </allowed-headers>
+        <expose-headers>
+          <header>*</header>
+        </expose-headers>
+      </cors>
     </inbound>
     <backend>
         <base />
