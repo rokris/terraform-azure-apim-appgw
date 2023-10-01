@@ -18,18 +18,20 @@ variable "tags" {
 }
 
 variable "DOMENESHOP_API_TOKEN" {
-  type      = string
-  sensitive = true
+  description = "This must be set in terraform.tfvars file"
+  type        = string
+  sensitive   = true
 }
 
 variable "DOMENESHOP_API_SECRET" {
-  type      = string
-  sensitive = true
+  description = "This must be set in terraform.tfvars file"
+  type        = string
+  sensitive   = true
 }
 
 variable "domain" {
   type    = string
-  default = null
+  default = "snorkelground.com"
 }
 
 variable "vnet_name" {
