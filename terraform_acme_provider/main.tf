@@ -27,7 +27,8 @@ resource "acme_certificate" "certificate" {
   account_key_pem           = acme_registration.reg.account_key_pem
   common_name               = var.cert_cn
   subject_alternative_names = [var.cert_sub == "" ? var.cert_cn : var.cert_sub]
-
+  depends_on                = [acme_registration.reg]
+  
   dns_challenge {
     provider = "domeneshop"
 
