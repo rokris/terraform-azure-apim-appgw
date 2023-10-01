@@ -54,7 +54,8 @@ resource "azurerm_api_management" "apim" {
   tags                 = var.tags
   virtual_network_type = "Internal"
   depends_on = [
-    azurerm_network_security_rule.rules
+    azurerm_network_security_rule.rules,
+    azurerm_subnet_network_security_group_association.ass
   ]
 
   sign_up {
