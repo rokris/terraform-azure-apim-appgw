@@ -75,7 +75,7 @@ resource "azurerm_api_management" "apim" {
                     <inbound>
                       <cors allow-credentials="true">
                         <allowed-origins>
-                          <origin>${var.developer_portal_dns_name}</origin>
+                          <origin>https://${var.developer_portal_dns_name}</origin>
                         </allowed-origins>
                         <allowed-methods preflight-result-max-age="300">
                           <method>*</method>
