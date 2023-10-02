@@ -43,4 +43,4 @@ Group 4
 - Terraform installed
 - Terrgrunt installed
 
-## Work still in progress
+## Work is still in progress
