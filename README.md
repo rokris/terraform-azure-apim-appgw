@@ -43,4 +43,15 @@ Group 4
 - Terraform installed
 - Terrgrunt installed
 
+## FinOps with Infracost
+https://www.infracost.io/docs/
+
+```bash
+brew install infracost \
+infracost auth login \
+infracost configure get api_key \
+infracost breakdown --path=. 
+```
+---
+
 ## Work is still in progress
