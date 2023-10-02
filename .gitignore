@@ -35,6 +35,9 @@ override.tf.json
 .terraformrc
 terraform.rc
 
+# Infracost
+.infracost
+
 # Other files / directories
 .DS_Store
 tfplan
