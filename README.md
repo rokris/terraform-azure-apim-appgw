@@ -46,10 +46,10 @@ Group 4
 ## FinOps with Infracost
 https://www.infracost.io/docs/
 
-```bash
-brew install infracost \
-infracost auth login \
-infracost configure get api_key \
+```shell
+brew install infracost
+infracost auth login
+infracost configure get api_key
 infracost breakdown --path=. 
 ```
 ---
