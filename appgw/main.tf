@@ -58,8 +58,16 @@ resource "azurerm_public_ip" "pip" {
   tags                = var.tags
 }
 
-# Register in Public DNS server
+resource "azurerm_public_ip" "pip2" {
+  name                = var.appgw_pip_name2
+  resource_group_name = data.azurerm_resource_group.rg.name
+  location            = var.location
+  allocation_method   = "Static"
+  sku                 = "Standard"
+  tags                = var.tags
+}
 
+# Register in Public DNS server
 data "azurerm_public_ip" "pip" {
   name                = azurerm_public_ip.pip.name
   resource_group_name = data.azurerm_resource_group.rg.name

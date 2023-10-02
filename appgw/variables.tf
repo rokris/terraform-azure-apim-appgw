@@ -17,18 +17,6 @@ variable "tags" {
   }
 }
 
-# variable "DOMENESHOP_API_TOKEN" {
-#   description = "This must be set in terraform.tfvars file"
-#   type        = string
-#   sensitive   = true
-# }
-
-# variable "DOMENESHOP_API_SECRET" {
-#   description = "This must be set in terraform.tfvars file"
-#   type        = string
-#   sensitive   = true
-# }
-
 variable "domain" {
   type    = string
   default = "snorkelground.com"
@@ -78,6 +66,10 @@ variable "frontend_ip_configuration_name" {
 
 variable "appgw_pip_name" {
   default = "ng-ti-test-rokris-agw-pip"
+}
+
+variable "appgw_pip_name" {
+  default = "ng-ti-test-rokris-agw-pip2"
 }
 
 variable "backend_subnet_name" {
