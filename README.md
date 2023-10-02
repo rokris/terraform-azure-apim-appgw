@@ -4,7 +4,6 @@
 ![image](https://github.com/rokris/terraform-azure-apim-appgw/assets/18302354/0f564774-ce3b-4f67-9331-b1a50affba77)
 
 - Edit variables.tf files according to your environment
-- Add terraform.tfvars files with correct values
 - Login (az login)
 - az account set --subscription \<subscription>
 - terraform init (optional: -upgrade)
@@ -13,24 +12,32 @@
 - terraform destroy (optional: -auto-approve)
 
 The running sequence of terraform deployments
-1. terraform_acme_provider
-2. private-dns
-3. apim
-4. appgw
+---
+Group 1
+- Module terraform_acme_provider
+- Module waf_policy
 
+Group 2
+- Module apim
+
+Group 3
+- Module private-dns
+
+Group 4
+- Module appgw
+---
 ### Alternativ deployment with use of Terragrunt
 - terragrunt run-all init -upgrade
-- terragrunt run-all plan -out tfplan --terragrunt-non-interactive
-- terragrunt run-all apply tfplan --terragrunt-non-interactive
-- terragrunt run-all destroy --terragrunt-non-interactive
-- (--terragrunt-ignore-dependency-errors)
+- terragrunt run-all plan -out tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
+- terragrunt run-all apply tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
+- terragrunt run-all destroy --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
 
 ## Requirements
 - Resourcegroup exist in Azure subscription
 - Azure Vnet exist in Azure subscription
-- Keyvault exist in Azure subscription
-    - domeneshop-api-token
-    - domeneshop-api-secret
+- Azure Key Vault exist in Azure subscription
+    - secret: domeneshop-api-token
+    - secret: domeneshop-api-secret
 - Storage account exist in Azure subscription
 - AZ CLI
 - Terraform installed
