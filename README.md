@@ -50,6 +50,7 @@ https://www.infracost.io/docs/
 brew install infracost
 infracost auth login
 infracost configure get api_key
+infracost configure set currency NOK
 infracost breakdown --path=. 
 ```
 ---
