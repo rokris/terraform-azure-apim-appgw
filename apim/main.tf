@@ -58,6 +58,46 @@ resource "azurerm_api_management" "apim" {
     azurerm_subnet_network_security_group_association.ass
   ]
 
+  policy = [
+    {
+      xml_content = <<-EOT
+                  <!--
+                      IMPORTANT:
+                      - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+                      - Only the <forward-request> policy element can appear within the <backend> section element.
+                      - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+                      - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+                      - To add a policy position the cursor at the desired insertion point and click on the round button associated with the policy.
+                      - To remove a policy, delete the corresponding policy statement from the policy document.
+                      - Policies are applied in the order of their appearance, from the top down.
+                  -->
+                  <policies>
+                    <inbound>
+                      <cors allow-credentials="true">
+                        <allowed-origins>
+                          <origin>https://portal.snorkelground.com</origin>
+                        </allowed-origins>
+                        <allowed-methods preflight-result-max-age="300">
+                          <method>*</method>
+                        </allowed-methods>
+                        <allowed-headers>
+                          <header>*</header>
+                        </allowed-headers>
+                        <expose-headers>
+                          <header>*</header>
+                        </expose-headers>
+                      </cors>
+                    </inbound>
+                    <backend>
+                      <forward-request />
+                    </backend>
+                    <outbound />
+                  </policies>
+              EOT
+      xml_link    = null
+    },
+  ]
+
   sign_up {
     enabled = true
 
@@ -114,37 +154,35 @@ resource "azurerm_api_management_api_policy" "inbound_policy" {
   api_management_name = var.apim_name
   resource_group_name = var.apim_rg
 
-  xml_content = <<XML
-<policies>
-    <inbound>
-      <base />
-      <mock-response status-code="200" content-type="application/json" />
-      <cors allow-credentials="true">
-        <allowed-origins>
-          <origin>https://${var.developer_portal_dns_name}</origin>
-        </allowed-origins>
-        <allowed-methods preflight-result-max-age="300">
-          <method>*</method>
-        </allowed-methods>
-        <allowed-headers>
-          <header>*</header>
-        </allowed-headers>
-        <expose-headers>
-          <header>*</header>
-        </expose-headers>
-      </cors>
-    </inbound>
-    <backend>
-        <base />
-    </backend>
-    <outbound>
-        <base />
-    </outbound>
-    <on-error>
-        <base />
-    </on-error>
-</policies>	
-	XML
+  xml_content = <<-EOT
+        <!--
+            IMPORTANT:
+            - Policy elements can appear only within the <inbound>, <outbound>, <backend> section elements.
+            - To apply a policy to the incoming request (before it is forwarded to the backend service), place a corresponding policy element within the <inbound> section element.
+            - To apply a policy to the outgoing response (before it is sent back to the caller), place a corresponding policy element within the <outbound> section element.
+            - To add a policy, place the cursor at the desired insertion point and select a policy from the sidebar.
+            - To remove a policy, delete the corresponding policy statement from the policy document.
+            - Position the <base> element within a section element to inherit all policies from the corresponding section element in the enclosing scope.
+            - Remove the <base> element to prevent inheriting policies from the corresponding section element in the enclosing scope.
+            - Policies are applied in the order of their appearance, from the top down.
+            - Comments within policy elements are not supported and may disappear. Place your comments between policy elements or at a higher level scope.
+        -->
+        <policies>
+        	<inbound>
+        		<base />
+        		<mock-response status-code="200" content-type="application/json" />
+        	</inbound>
+        	<backend>
+        		<base />
+        	</backend>
+        	<outbound>
+        		<base />
+        	</outbound>
+        	<on-error>
+        		<base />
+        	</on-error>
+        </policies>
+    EOT
 }
 
 #Read the External Key Vault
