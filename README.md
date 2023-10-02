@@ -51,7 +51,7 @@ https://www.infracost.io/docs/
 brew install infracost
 infracost auth login
 infracost configure get api_key
-infracost configure set currency NOK
+export INFRACOST_CURRENCY_FORMAT="NOK: 1.234,56 kr"
 infracost breakdown --path=. 
 ```
 
