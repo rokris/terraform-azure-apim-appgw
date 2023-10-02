@@ -1,13 +1,3 @@
-# variable "dns_records" {
-#   type = list(object({
-#     name                = string
-#     resource_group_name = string
-#     zone_name           = string
-#     ttl                 = string
-#     records             = set(string)
-#   }))
-# }
-
 variable "private_dns_rg" {
   default = "ng-ti-test-rokris-rg"
 }
