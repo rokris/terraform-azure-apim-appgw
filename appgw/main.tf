@@ -58,8 +58,6 @@ resource "azurerm_public_ip" "pip" {
   tags                = var.tags
 }
 
-# Register in Public DNS server
-
 data "azurerm_public_ip" "pip" {
   name                = azurerm_public_ip.pip.name
   resource_group_name = data.azurerm_resource_group.rg.name
@@ -69,6 +67,7 @@ data "domeneshop_domains" "domain" {
   domain = var.domain
 }
 
+# Register in Public DNS server
 resource "domeneshop_record" "api" {
   domain_id = data.domeneshop_domains.domain.domains[0].id
   host      = "api"

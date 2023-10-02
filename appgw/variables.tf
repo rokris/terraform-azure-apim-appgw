@@ -17,18 +17,6 @@ variable "tags" {
   }
 }
 
-# variable "DOMENESHOP_API_TOKEN" {
-#   description = "This must be set in terraform.tfvars file"
-#   type        = string
-#   sensitive   = true
-# }
-
-# variable "DOMENESHOP_API_SECRET" {
-#   description = "This must be set in terraform.tfvars file"
-#   type        = string
-#   sensitive   = true
-# }
-
 variable "domain" {
   type    = string
   default = "snorkelground.com"
