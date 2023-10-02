@@ -1,5 +1,6 @@
 # terraform-azure-apim-appgw
 ## Deploy DNS Private zone, Azure API Management, Azure App Gateway
+[![infracost](https://img.shields.io/endpoint?url=https://dashboard.api.infracost.io/shields/json/9775c3c0-30e0-4a7b-872e-34be9cce38f2/repos/1a8537db-dda5-4531-bda2-f0a757744edf/branch/f62d9988-dd0e-4410-b167-eb91ce32f50b)](https://dashboard.infracost.io/org/rokris/repos/1a8537db-dda5-4531-bda2-f0a757744edf?tab=settings)
 
 ![image](https://github.com/rokris/terraform-azure-apim-appgw/assets/18302354/0f564774-ce3b-4f67-9331-b1a50affba77)
 
@@ -53,6 +54,7 @@ infracost configure get api_key
 infracost configure set currency NOK
 infracost breakdown --path=. 
 ```
+
 ---
 
 ## Work is still in progress
