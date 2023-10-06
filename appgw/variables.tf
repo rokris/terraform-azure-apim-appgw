@@ -68,14 +68,6 @@ variable "appgw_pip_name" {
   default = "ng-ti-test-rokris-agw-pip"
 }
 
-variable "backend_subnet_name" {
-  default = "ng-ti-test-rokris-backend-agw-snet"
-}
-
-variable "backend_subnet_iprange" {
-  default = "10.96.10.80/28"
-}
-
 variable "backend_address_pool_name" {
   default = "ApimPool"
 }

@@ -42,13 +42,6 @@ resource "azurerm_subnet" "frontend" {
   address_prefixes     = [var.frontend_subnet_iprange]
 }
 
-resource "azurerm_subnet" "backend" {
-  name                 = var.backend_subnet_name
-  resource_group_name  = data.azurerm_resource_group.rg.name
-  virtual_network_name = var.vnet_name
-  address_prefixes     = [var.backend_subnet_iprange]
-}
-
 resource "azurerm_public_ip" "pip" {
   name                = var.appgw_pip_name
   resource_group_name = data.azurerm_resource_group.rg.name
