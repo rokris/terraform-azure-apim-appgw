@@ -48,11 +48,11 @@ variable "enable_http2" {
   default     = true
 }
 
-variable "frontend_subnet_name" {
-  default = "ng-ti-test-rokris-frontend-agw-snet"
+variable "appgw_subnet_name" {
+  default = "ng-ti-test-rokris-agw-snet"
 }
 
-variable "frontend_subnet_iprange" {
+variable "appgw_subnet_iprange" {
   default = "10.96.10.64/28"
 }
 

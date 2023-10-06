@@ -35,11 +35,11 @@ resource "azurerm_key_vault_access_policy" "policy" {
   ]
 }
 
-resource "azurerm_subnet" "frontend" {
-  name                 = var.frontend_subnet_name
+resource "azurerm_subnet" "appgw" {
+  name                 = var.appgw_subnet_name
   resource_group_name  = data.azurerm_resource_group.rg.name
   virtual_network_name = var.vnet_name
-  address_prefixes     = [var.frontend_subnet_iprange]
+  address_prefixes     = [var.appgw_subnet_iprange]
 }
 
 resource "azurerm_public_ip" "pip" {
@@ -137,7 +137,7 @@ resource "azurerm_application_gateway" "main" {
 
   gateway_ip_configuration {
     name      = var.gateway_ip_config_name
-    subnet_id = azurerm_subnet.frontend.id
+    subnet_id = azurerm_subnet.appgw.id
   }
 
   frontend_port {
