@@ -165,7 +165,7 @@ resource "azurerm_application_gateway" "main" {
   }
 
   ssl_certificate {
-    key_vault_secret_id = data.azurerm_key_vault_certificate.prod_certificate.secret_id
+    key_vault_secret_id = data.azurerm_key_vault_certificate.prod_certificate.versionless_secret_id
     name                = var.certificate_name
   }
 
