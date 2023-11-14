@@ -100,6 +100,10 @@ resource "azurerm_api_management" "apim" {
     },
   ]
 
+  tenant_access {
+    enabled= true
+  }
+
   sign_up {
     enabled = true
 
