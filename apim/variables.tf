@@ -26,6 +26,10 @@ variable "apim_subnet_iprange" {
   default = "10.96.10.16/28"
 }
 
+variable "apim_subnet_service_endpoints" {
+  default = "Microsoft.KeyVault"  
+}
+
 variable "apim_pip_name" {
   default = "ng-ti-test-rokris-apim-pip"
 }
@@ -45,9 +49,9 @@ variable "certificate_name" {
   default = "star-snorkelground"
 }
 
-variable "dns_zone" {
-  default = "snorkelground.com"
-}
+# variable "dns_zone" {
+#   default = "snorkelground.com"
+# }
 
 variable "sku" {
   default = "Developer_1"

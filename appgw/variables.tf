@@ -31,7 +31,7 @@ variable "keyvault" {
 }
 
 variable "apim_gateway_dns_name" {
-  default = "api.snorkelground.com"
+  default = "api.azure-api.net"
 }
 
 variable "certificate_name" {
@@ -82,6 +82,10 @@ variable "listener_name" {
 
 variable "probe_name" {
   default = "test_probe"
+}
+
+variable "probe_apim_gateway_dns_name" {
+  default = "api.snorkelground.com"
 }
 
 variable "gateway_ip_config_name" {

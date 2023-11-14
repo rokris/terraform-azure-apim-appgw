@@ -14,7 +14,7 @@ variable "tags" {
 }
 
 variable "dns_zone" {
-  default = "snorkelground.com"
+  default = "azure-api.net"
 }
 
 variable "apim_name" {

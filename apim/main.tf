@@ -4,6 +4,7 @@ resource "azurerm_subnet" "apim-subnet" {
   resource_group_name  = var.apim_rg
   virtual_network_name = var.vnet_name
   address_prefixes     = [var.apim_subnet_iprange]
+  service_endpoints    = [var.apim_subnet_service_endpoints]
 }
 
 resource "azurerm_network_security_group" "apim-nsg" {
@@ -51,6 +52,7 @@ resource "azurerm_api_management" "apim" {
   publisher_email      = var.publisher_email
   publisher_name       = var.publisher_name
   sku_name             = var.sku
+  min_api_version      = "2019-12-01"
   tags                 = var.tags
   virtual_network_type = "Internal"
   depends_on = [

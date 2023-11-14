@@ -184,7 +184,7 @@ resource "azurerm_application_gateway" "main" {
 
   probe {
     name                                      = var.probe_name
-    host                                      = var.apim_gateway_dns_name
+    host                                      = var.probe_apim_gateway_dns_name
     protocol                                  = "Https"
     interval                                  = 30
     minimum_servers                           = 0
