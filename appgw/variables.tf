@@ -1,3 +1,7 @@
+variable "waf_policy_name" {
+  default = "ng-ti-test-rokris-waf"
+}
+
 variable "appgw_rg" {
   default = "ng-ti-test-rokris-rg"
 }

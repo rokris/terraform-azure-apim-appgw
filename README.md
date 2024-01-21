@@ -17,7 +17,6 @@ The running sequence of terraform deployments
 ---
 Group 1
 - Module terraform_acme_provider
-- Module waf_policy
 
 Group 2
 - Module apim
