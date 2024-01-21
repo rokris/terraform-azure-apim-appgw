@@ -272,25 +272,19 @@ resource "azurerm_subnet_nat_gateway_association" "association" {
 #Read the Virtual net
 data "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
-  resource_group_name = var.private_dns_rg
+  resource_group_name = var.apim_rg
 }
-
-#Read the APIM private IP
-#data "azurerm_api_management" "private-ip" {
-#  name                = var.apim_name
-#  resource_group_name = var.private_dns_rg
-#}
 
 resource "azurerm_private_dns_zone" "dns" {
   name                = var.dns_zone
-  resource_group_name = var.private_dns_rg
+  resource_group_name = var.apim_rg
   tags                = var.tags
 }
 
 #Create a Virtual network link to subnet
 resource "azurerm_private_dns_zone_virtual_network_link" "virtual-link" {
   name                  = "${var.dns_zone}-link"
-  resource_group_name   = var.private_dns_rg
+  resource_group_name   = var.apim_rg
   private_dns_zone_name = azurerm_private_dns_zone.dns.name
   virtual_network_id    = data.azurerm_virtual_network.vnet.id
 }

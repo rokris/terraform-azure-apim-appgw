@@ -1,7 +1,3 @@
-variable "private_dns_rg" {
-  default = "ng-ti-test-rokris-rg"
-}
-
 variable "dns_zone" {
   default = "azure-api.net"
 }
