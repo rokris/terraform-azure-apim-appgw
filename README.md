@@ -15,6 +15,7 @@
 - Terraform installed
 - Terrgrunt installed
 
+## Terraform deployment
 - Edit variables.tf files according to your environment
 - Login (az login)
 - az account set --subscription \<subscription>
