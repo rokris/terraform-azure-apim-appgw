@@ -4,6 +4,16 @@
 
 ![Azure APIM architecture](https://github.com/rokris/terraform-azure-apim-appgw/assets/18302354/145eaec1-94b1-4c38-a2c3-89b606364b4f)
 
+## Requirements
+- Resourcegroup exist in Azure subscription
+- Azure Vnet exist in Azure subscription
+- Azure Key Vault exist in Azure subscription
+    - secret: domeneshop-api-token
+    - secret: domeneshop-api-secret
+- Storage account exist in Azure subscription
+- AZ CLI
+- Terraform installed
+- Terrgrunt installed
 
 - Edit variables.tf files according to your environment
 - Login (az login)
@@ -29,17 +39,6 @@ Group 3
 - terragrunt run-all plan -out tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
 - terragrunt run-all apply tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
 - terragrunt run-all destroy --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
-
-## Requirements
-- Resourcegroup exist in Azure subscription
-- Azure Vnet exist in Azure subscription
-- Azure Key Vault exist in Azure subscription
-    - secret: domeneshop-api-token
-    - secret: domeneshop-api-secret
-- Storage account exist in Azure subscription
-- AZ CLI
-- Terraform installed
-- Terrgrunt installed
 
 ## FinOps with Infracost
 https://www.infracost.io/docs/
