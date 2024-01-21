@@ -23,9 +23,6 @@ Group 2
 - Module apim
 
 Group 3
-- Module private-dns
-
-Group 4
 - Module appgw
 ---
 ### Alternativ deployment with use of Terragrunt
