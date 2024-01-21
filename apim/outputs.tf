@@ -18,3 +18,12 @@ output "api_management_private_ip_addresses" {
   description = "The Private IP addresses of the API Management Service"
   value       = azurerm_api_management.apim.private_ip_addresses
 }
+
+output "dns_zone_name" {
+  value = azurerm_private_dns_zone.dns.name
+}
+
+output "tags" {
+  value = azurerm_private_dns_zone.dns.tags
+}
+
