@@ -53,10 +53,6 @@ variable "certificate_name" {
   default = "star-snorkelground"
 }
 
-# variable "dns_zone" {
-#   default = "snorkelground.no"
-# }
-
 variable "sku" {
   default = "Developer_1"
 }
