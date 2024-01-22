@@ -54,7 +54,7 @@ variable "certificate_name" {
 }
 
 # variable "dns_zone" {
-#   default = "snorkelground.com"
+#   default = "snorkelground.no"
 # }
 
 variable "sku" {
@@ -70,15 +70,15 @@ variable "publisher_name" {
 }
 
 variable "gateway_dns_name" {
-  default = "api.snorkelground.com"
+  default = "api.snorkelground.no"
 }
 
 variable "developer_portal_dns_name" {
-  default = "portal.snorkelground.com"
+  default = "portal.snorkelground.no"
 }
 
 variable "management_dns_name" {
-  default = "management.snorkelground.com"
+  default = "management.snorkelground.no"
 }
 
 variable "nsg_rules" {
