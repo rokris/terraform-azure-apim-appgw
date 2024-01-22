@@ -14,10 +14,6 @@ resource "azurerm_api_management_api" "example" {
     query  = "subscription-key"
   }
 
-  depends_on = [
-    azurerm_api_management.apim
-  ]
-
   import {
     content_format = "swagger-link-json"
     content_value  = "https://petstore.swagger.io/v2/swagger.json"
