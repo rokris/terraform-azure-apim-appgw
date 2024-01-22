@@ -23,7 +23,7 @@ variable "tags" {
 
 variable "domain" {
   type    = string
-  default = "snorkelground.com"
+  default = "snorkelground.no"
 }
 
 variable "vnet_name" {
@@ -89,7 +89,7 @@ variable "probe_name" {
 }
 
 variable "probe_apim_gateway_dns_name" {
-  default = "api.snorkelground.com"
+  default = "api.snorkelground.no"
 }
 
 variable "gateway_ip_config_name" {
