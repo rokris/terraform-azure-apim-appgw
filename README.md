@@ -34,6 +34,10 @@ Group 2
 
 Group 3
 - Module appgw
+
+Group 4
+- Module demo_petstore_mock
+
 ---
 ### Alternativ deployment with use of Terragrunt
 - terragrunt run-all init -upgrade
