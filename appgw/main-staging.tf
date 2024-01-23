@@ -257,7 +257,6 @@ resource "azurerm_application_gateway" "main" {
     protocol                       = "Https"
     request_timeout                = 60
     probe_name                     = var.probe_name
-    #trusted_root_certificate_names = ["letsencrypt-stg-root-x1", ]
     trusted_root_certificate_names = var.environment == "staging" ? local.rootcert : null
   }
   
