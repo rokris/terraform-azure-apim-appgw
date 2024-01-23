@@ -1,1 +1,5 @@
-rootcert = ["letsencrypt-stg-root-x1", ]
+locals {
+  rootcert = [
+    "letsencrypt-stg-root-x1",
+  ]
+}
