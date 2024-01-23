@@ -23,9 +23,11 @@ provider "azurerm" {
 }
 
 provider "acme" {
+  server_url = local.environment == "staging" ? local.letsencrypt-staging : letsencrypt-production
+
   # Staging certificate for test
   #server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
 
   # Production certificate
-  server_url = "https://acme-v02.api.letsencrypt.org/directory"
+  #server_url = "https://acme-v02.api.letsencrypt.org/directory"
 }
