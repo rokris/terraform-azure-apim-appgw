@@ -25,19 +25,19 @@
 
 The running sequence of terraform deployments
 ---
-Group 1
+Manual run with Terraform to create the storage-account
 - Module storage-account
 
-Group 2
+Group 1
 - Module terraform_acme_provider
 
-Group 3
+Group 2
 - Module apim
 
-Group 4
+Group 3
 - Module appgw
 
-Group 5
+Group 4
 - Module demo_petstore_mock
 
 ---
