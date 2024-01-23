@@ -25,7 +25,7 @@
 
 The running sequence of terraform deployments
 ---
-Manual run with Terraform to create the storage-account
+Group 0
 - Module storage-account
 
 Group 1
@@ -42,6 +42,7 @@ Group 4
 
 ---
 ### Alternativ deployment with use of Terragrunt
+- Create the storage-account with Terraform code
 - terragrunt run-all init -upgrade
 - terragrunt run-all plan -out tfplan --terragrunt-non-interactive (optional: --terragrunt-ignore-dependency-errors)
 - terragrunt run-all apply tfplan --terragrunt-non-interactive (optional: --terragrunt-ignore-dependency-errors)
