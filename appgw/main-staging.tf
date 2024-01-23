@@ -257,12 +257,17 @@ resource "azurerm_application_gateway" "main" {
   }
 
   backend_http_settings {
-    name                  = var.https_setting_name
-    cookie_based_affinity = "Disabled"
-    port                  = 443
-    protocol              = "Https"
-    request_timeout       = 60
-    probe_name            = var.probe_name
+    name                           = var.https_setting_name
+    cookie_based_affinity          = "Disabled"
+    port                           = 443
+    protocol                       = "Https"
+    request_timeout                = 60
+    probe_name                     = var.probe_name
+    trusted_root_certificate_names = ["letsencrypt-stg-root-x1", ]
+  }
+  
+  trusted_root_certificate {
+    name = "letsencrypt-stg-root-x1"
   }
 
   ssl_certificate {
