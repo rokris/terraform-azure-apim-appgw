@@ -1,6 +1,6 @@
 variable "environment" {
   default     = "staging"
-  description = "Set variable to staging if the using a staging certificate from Letsencrypt"
+  description = "Set variable to staging if using a staging certificate from Letsencrypt"
 }
 
 variable "resource_group_name" {
