@@ -1,5 +1,5 @@
 variable "environment" {
-  default     = "staging"
+  default     = "production"
   description = "Set variable to staging if using a staging certificate from Letsencrypt"
 }
 
