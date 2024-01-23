@@ -10,7 +10,6 @@
 - Azure Key Vault exist in Azure subscription
     - secret: domeneshop-api-token
     - secret: domeneshop-api-secret
-- Storage account exist in Azure subscription
 - AZ CLI
 - Terraform installed
 - Terrgrunt installed
@@ -27,15 +26,18 @@
 The running sequence of terraform deployments
 ---
 Group 1
-- Module terraform_acme_provider
+- Module storage-account
 
 Group 2
-- Module apim
+- Module terraform_acme_provider
 
 Group 3
-- Module appgw
+- Module apim
 
 Group 4
+- Module appgw
+
+Group 5
 - Module demo_petstore_mock
 
 ---
