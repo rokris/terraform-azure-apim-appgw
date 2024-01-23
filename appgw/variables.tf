@@ -1,3 +1,8 @@
+variable "environment" {
+  default     = "staging"
+  description = "Choose between staging or prooduction"
+}
+
 variable "waf_policy_name" {
   default = "ng-ti-test-rokris-waf"
 }
