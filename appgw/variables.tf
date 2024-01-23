@@ -1,6 +1,6 @@
 variable "environment" {
   default     = "staging"
-  description = "Choose between staging or prooduction"
+  description = "Set variable to staging if the using a staging certificate from Letsencrypt"
 }
 
 variable "waf_policy_name" {
