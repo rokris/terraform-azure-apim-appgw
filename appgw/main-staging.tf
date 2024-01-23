@@ -206,12 +206,6 @@ resource "azurerm_web_application_firewall_policy" "main" {
   }
 }
 
-## Read Web Application Firewall policy ID
-#data "azurerm_web_application_firewall_policy" "waf-id" {
-#  name                = "ng-ti-test-rokris-waf"
-#  resource_group_name = var.appgw_rg
-#}
-
 # Create an application gateway
 resource "azurerm_application_gateway" "main" {
   name                = var.appgw_name
