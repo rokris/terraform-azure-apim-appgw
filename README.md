@@ -44,9 +44,9 @@ Group 4
 ### Alternativ deployment with use of Terragrunt
 - Create the storage-account with Terraform code
 - terragrunt run-all init -upgrade
-- terragrunt run-all plan -out tfplan --terragrunt-non-interactive (optional: --terragrunt-ignore-dependency-errors)
-- terragrunt run-all apply tfplan --terragrunt-non-interactive (optional: --terragrunt-ignore-dependency-errors)
-- terragrunt run-all destroy --terragrunt-non-interactive (optional: --terragrunt-ignore-dependency-errors)
+- terragrunt run-all plan -out tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
+- terragrunt run-all apply tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
+- terragrunt run-all destroy --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
 
 ## FinOps with Infracost
 https://www.infracost.io/docs/
