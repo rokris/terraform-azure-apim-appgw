@@ -116,3 +116,8 @@ variable "sku" {
   type        = string
   default     = "WAF_v2"
 }
+
+variable "sku_capacity" {
+  description = "The number of instance for this Application Gateway. Possible values are 1 to 32"
+  default     = 1
+}
