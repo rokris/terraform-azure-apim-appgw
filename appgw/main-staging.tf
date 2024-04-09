@@ -227,7 +227,7 @@ resource "azurerm_application_gateway" "main" {
   sku {
     name     = var.sku
     tier     = var.sku
-    capacity = 1
+    capacity = var.sku
   }
 
   gateway_ip_configuration {
