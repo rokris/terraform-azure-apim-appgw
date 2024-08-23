@@ -6,7 +6,7 @@ resource "azurerm_subnet" "apim-subnet" {
   address_prefixes     = [var.apim_subnet_iprange]
   service_endpoints    = [var.apim_subnet_service_endpoints]
 }
-   
+
 resource "azurerm_network_security_group" "apim-nsg" {
   name                = var.apim_nsg_name
   location            = var.location
