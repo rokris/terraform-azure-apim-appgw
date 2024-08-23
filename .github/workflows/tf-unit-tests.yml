@@ -35,9 +35,11 @@ jobs:
       run: terraform validate
 
     # Checks that all Terraform configuration files adhere to a canonical format
-    #- name: Terraform Format
-    #  run: terraform fmt -check -recursive
-    
+    - name: Terraform Format
+      id: fmt
+      run: terraform fmt -check -diff -recursive
+      continue-on-error: true
+
     # Perform a security scan of the terraform code using checkov
     - name: Checkov GitHub Action
       id: checkov
