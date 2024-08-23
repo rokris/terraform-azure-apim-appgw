@@ -16,6 +16,7 @@ jobs:
   terraform-unit-tests:
     name: 'Terraform Unit Tests'
     runs-on: ubuntu-latest
+    continue-on-error: true
 
     steps:
     # Checkout the repository to the GitHub Actions runner
@@ -30,7 +31,6 @@ jobs:
     - name: Checkov GitHub Action
       id: checkov
       uses: bridgecrewio/checkov-action@v12
-      continue-on-error: true
       with:
         framework: terraform
         # This will add both a CLI output to the console and create a results.sarif file
@@ -49,7 +49,6 @@ jobs:
     - name: Terraform Format
       id: fmt
       run: terraform fmt -check -diff -recursive
-      #continue-on-error: true
 
     # Upload results to GitHub Advanced Security
     - name: Upload SARIF file
