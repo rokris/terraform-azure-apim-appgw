@@ -259,7 +259,7 @@ resource "azurerm_application_gateway" "main" {
     probe_name                     = var.probe_name
     trusted_root_certificate_names = var.environment == "staging" ? local.rootcert : null
   }
-  
+
   trusted_root_certificate {
     name = "letsencrypt-stg-root-x1"
     data = file("letsencrypt-stg-root-x1.cer")
