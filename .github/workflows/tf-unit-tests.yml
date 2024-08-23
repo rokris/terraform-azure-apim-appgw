@@ -16,7 +16,7 @@ jobs:
   terraform-unit-tests:
     name: 'Terraform Unit Tests'
     runs-on: ubuntu-latest
-    
+
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
@@ -25,6 +25,16 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
+
+    # Perform a security scan of the terraform code using checkov
+    - name: Checkov GitHub Action
+      id: checkov
+      uses: bridgecrewio/checkov-action@v12
+      with:
+        framework: terraform
+        # This will add both a CLI output to the console and create a results.sarif file
+        output_format: cli,sarif
+        output_file_path: console,results.sarif
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
@@ -38,17 +48,7 @@ jobs:
     - name: Terraform Format
       id: fmt
       run: terraform fmt -check -diff -recursive
-      continue-on-error: true
-
-    # Perform a security scan of the terraform code using checkov
-    - name: Checkov GitHub Action
-      id: checkov
-      uses: bridgecrewio/checkov-action@v12
-      with:
-        framework: terraform
-        # This will add both a CLI output to the console and create a results.sarif file
-        output_format: cli,sarif
-        output_file_path: console,results.sarif
+      #continue-on-error: true
 
     # Upload results to GitHub Advanced Security
     - name: Upload SARIF file
