@@ -31,7 +31,7 @@ variable "apim_subnet_iprange" {
 }
 
 variable "apim_subnet_service_endpoints" {
-  default = "Microsoft.KeyVault"  
+  default = "Microsoft.KeyVault"
 }
 
 variable "apim_pip_name" {
