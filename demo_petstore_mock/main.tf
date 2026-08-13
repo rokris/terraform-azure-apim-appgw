@@ -15,8 +15,8 @@ resource "azurerm_api_management_api" "example" {
   }
 
   import {
-    content_format = "swagger-link-json"
-    content_value  = "https://petstore.swagger.io/v2/swagger.json"
+    content_format = "openapi+json-link"
+    content_value  = "https://petstore3.swagger.io/api/v3/openapi.json"
   }
 }
 
