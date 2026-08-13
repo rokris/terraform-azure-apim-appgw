@@ -4,5 +4,6 @@ terraform {
     storage_account_name = "ngtitestrokristfstate"
     container_name       = "tfstate"
     key                  = "terraform_acme_provider.terraform.tfstate"
+    use_azuread_auth     = true
   }
 }

@@ -12,7 +12,7 @@
     - secret: domeneshop-api-secret
 - AZ CLI
 - Terraform installed
-- Terrgrunt installed
+- Terragrunt installed
 
 ## Terraform deployment
 - Edit variables.tf files according to your environment
@@ -43,10 +43,31 @@ Group 4
 ---
 ### Alternativ deployment with use of Terragrunt
 - Create the storage-account with Terraform code
-- terragrunt run-all init -upgrade
-- terragrunt run-all plan -out tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
-- terragrunt run-all apply tfplan --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
-- terragrunt run-all destroy --terragrunt-non-interactive --terragrunt-ignore-dependency-errors
+
+Terragrunt 1.x bruker `run --all` i stedet for den tidligere `run-all`-syntaksen:
+
+```shell
+az login
+az account set --subscription "<subscription-id>"
+az account show
+
+terragrunt run --all -- init -upgrade
+terragrunt run --all --non-interactive -- plan -input=false
+terragrunt run --all --non-interactive -- apply
+terragrunt run --all --non-interactive -- destroy
+```
+
+Hvis både Terraform og OpenTofu er installert, kan Terraform velges eksplisitt:
+
+```shell
+terragrunt run --all --tf-path terraform -- plan -input=false
+```
+
+For å fortsette med andre units dersom en dependency feiler:
+
+```shell
+terragrunt run --all --queue-ignore-errors -- plan -input=false
+```
 
 ## FinOps with Infracost
 https://www.infracost.io/docs/
