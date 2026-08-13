@@ -52,8 +52,8 @@ az account set --subscription "<subscription-id>"
 az account show
 
 terragrunt run --all -- init -upgrade
-terragrunt run --all --non-interactive --queue-ignore-errors -- plan -out=tfplan
-terragrunt run --all --non-interactive --queue-ignore-errors -- apply tfplan
+terragrunt run --all --non-interactive --queue-ignore-errors -- plan -input=false
+terragrunt run --all --non-interactive --queue-ignore-errors -- apply
 terragrunt run --all --non-interactive --queue-ignore-errors -- destroy
 ```
 
@@ -66,7 +66,7 @@ terragrunt run --all --tf-path terraform -- plan -input=false
 For å fortsette med andre units dersom en dependency feiler:
 
 ```shell
-terragrunt run --all --non-interactive --queue-ignore-errors -- plan -out=tfplan
+terragrunt run --all --non-interactive --queue-ignore-errors -- plan -input=false
 ```
 
 ## FinOps with Infracost
